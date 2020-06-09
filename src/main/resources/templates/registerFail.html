@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Panelel Inwestora</title>
+<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+	<center>
+		<h1>Panel</h1>
+		
+		<ul>
+			<li><a href="/">Strona domowa</a></li>
+			<li><a href="login">Zaloguj</a></li>
+			<li><a href="registration"> Rejestracja</a></li>
+			<li><a href="userPanel">Panel klienta</a></li>
+			<li><a href="kontakt">Kontakt</a></li>
+		</ul>
+		<br><br>
+		<h2>Konto o podanym adresie email już istnieje!</h2>
+		<br><br>
+		<a href="#" th:href="@{/}"> Wróć do strony głównej</a>
+	</center>
+</body>
+</html>
