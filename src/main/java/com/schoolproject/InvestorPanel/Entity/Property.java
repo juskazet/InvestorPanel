@@ -65,9 +65,7 @@ public class Property {
 		super();
 	}
 	
-	
-
-public Property(Long owner, String name, String voivodeship, String city, String address, int bedrooms, int bathrooms,
+	public Property(Long owner, String name, String voivodeship, String city, String address, int bedrooms, int bathrooms,
 		int yearBuilt, float area, int purchasePrice, int purchaseCosts) {
 	super();
 	this.owner = owner;
