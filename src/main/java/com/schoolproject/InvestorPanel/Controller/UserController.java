@@ -6,14 +6,11 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.servlet.ModelAndView;
 
 import com.schoolproject.InvestorPanel.Entity.Property;
 import com.schoolproject.InvestorPanel.Entity.PropertyRepository;
@@ -118,27 +115,21 @@ public class UserController {
 //		return "adminSite";
 //	}
 	
-	@RequestMapping("/adminSite")
-	public String manageUsers(Model model) {
-		Iterable<User> allUsers = userRepository.findAll();
-		model.addAttribute("allUsers", allUsers);
-		//System.out.println(allUsers);
-		return "adminSite";
-	}
 	
 	
 	
 	@RequestMapping("/deleteUser/{id}")
 	public String deleteUser(@PathVariable(name = "id") Long id) {
-		userRepository.findOneById(id).toString();
+		User user = userRepository.findOneById(id);
+		Iterable<Property> allUserProperties = propertyRepository.findByOwner(id);
+		propertyRepository.deleteAll(allUserProperties);
 		userRepository.deleteById(id);
 		return "redirect:/adminPanel";
 	}
 	
 	@RequestMapping("/addAdminRole/{id}")
 	public String addAdminRole(@PathVariable(name = "id") Long id) {
-		User user = userRepository.findOneById(id);
-		user.toString();
+
 		userService.addAdminRole(userRepository.findOneById(id));
 		return "redirect:/adminPanel";
 	}

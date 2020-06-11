@@ -41,10 +41,22 @@ public class Property {
 	private float area;
 	
 	@Column(name = "purchase_price", nullable = false)
-	private int purchasePrice;
+	private float purchasePrice;
 
 	@Column(name = "monthly_property_rent", nullable = false)
-	private int propertyRental;
+	private float propertyRental;
+	
+	@Column(name = "renovation_finish_price", nullable = false)
+	private float renovationPrice;
+	
+	@Column(name = "additional_costs", nullable = false)
+	private float additionalCosts;
+	
+	@Column(name = "tax", nullable = false)
+	private float tax;
+	
+	
+	
 
 
 	public Property() {
@@ -65,6 +77,27 @@ public class Property {
 		this.purchasePrice = purchasePrice;
 		this.propertyRental = propertyRental;
 	}
+	
+	
+
+public Property(Long owner, String name, String city, String address, int bedrooms, int bathrooms, int yearBuilt,
+			float area, float purchasePrice, float propertyRental, float renovationPrice, float additionalCosts,
+			float tax) {
+		super();
+		this.owner = owner;
+		this.name = name;
+		this.city = city;
+		this.address = address;
+		this.bedrooms = bedrooms;
+		this.bathrooms = bathrooms;
+		this.yearBuilt = yearBuilt;
+		this.area = area;
+		this.purchasePrice = purchasePrice;
+		this.propertyRental = propertyRental;
+		this.renovationPrice = renovationPrice;
+		this.additionalCosts = additionalCosts;
+		this.tax = tax;
+	}
 
 //	public Property(Long owner, String name, String city, String address, int bedrooms, int bathrooms,
 //		int yearBuilt, float area, int purchasePrice, int propertyRental) {
@@ -81,8 +114,42 @@ public class Property {
 //	this.propertyRental = propertyRental;
 //}
 
+
+
 	public Long getId() {
 		return id;
+	}
+
+	public float getRenovationPrice() {
+		return renovationPrice;
+	}
+
+	public void setRenovationPrice(float renovationPrice) {
+		this.renovationPrice = renovationPrice;
+	}
+
+	public float getAdditionalCosts() {
+		return additionalCosts;
+	}
+
+	public void setAdditionalCosts(float additionalCosts) {
+		this.additionalCosts = additionalCosts;
+	}
+
+	public float getTax() {
+		return tax;
+	}
+
+	public void setTax(float tax) {
+		this.tax = tax;
+	}
+
+	public void setPurchasePrice(float purchasePrice) {
+		this.purchasePrice = purchasePrice;
+	}
+
+	public void setPropertyRental(float propertyRental) {
+		this.propertyRental = propertyRental;
 	}
 
 	public void setId(Long id) {
@@ -153,7 +220,7 @@ public class Property {
 		this.area = area;
 	}
 
-	public int getPurchasePrice() {
+	public float getPurchasePrice() {
 		return purchasePrice;
 	}
 
@@ -161,7 +228,7 @@ public class Property {
 		this.purchasePrice = purchasePrice;
 	}
 
-	public int getPropertyRental() {
+	public float getPropertyRental() {
 		return propertyRental;
 	}
 

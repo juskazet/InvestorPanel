@@ -11,29 +11,25 @@
 		<h2>Edytuj nieruchomość</h2>
 		<ul>
 			<li><a href="/">Strona domowa</a></li>
-
+			<li><a href="login">Zaloguj</a></li>
+			<li><a href="registration"> Rejestracja</a></li>
 			<li><a href="manage">Zarzadzaj</a></li>
 			<li><a href="kontakt">Kontakt</a></li>
-			<br>
-			<a href="logout">Wyloguj</a>
-			<br>
+
 		</ul>
 
 		<form action="#" th:action="@{/update}" method="post"
-			th:object="${property}"
-			oninput="sumresult.value = parseInt(A.value)  
-                + parseInt(B.value) + parseInt(C.value) + parseInt(D.value)">
+			th:object="${property}">
 
 			<table border="0" cellpadding="10">
 
 				<tr>
-					<!-- 	<td>id:</td>  -->
+				<!-- 	<td>id:</td>  -->
 					<td><input type="hidden" th:field="*{id}" readonly="readonly" /></td>
 				</tr>
 				<tr>
-					<!--  	<td>owner:</td>   -->
-					<td><input type="hidden" th:field="*{owner}"
-						readonly="readonly" /></td>
+				<!--  	<td>owner:</td>   -->
+					<td><input type="hidden" th:field="*{owner}" readonly="readonly" /></td>
 				</tr>
 				<tr>
 					<td>Nieruchomość:</td>
@@ -54,7 +50,7 @@
 				<tr>
 					<td>Liczba łazienek:</td>
 
-					<td><input type="number" th:field="*{bathrooms}" /></td>
+				<td><input type="number" th:field="*{bathrooms}" /></td>
 				</tr>
 				<tr>
 					<td>Rok budowy:</td>
@@ -66,33 +62,25 @@
 				</tr>
 				<tr>
 					<td>Cena zakupu:</td>
-					<td><input type="number" th:field="*{purchasePrice}" name="A" /></td>
-				</tr>
-
-				<tr>
-					<td>Koszt wykończenia/remontu:</td>
-					<td><input type="number" th:field="*{renovationPrice}"
-						name="B" required /></td>
-				</tr>
-				<tr>
-					<td>Podatek %:</td>
-					<td><input type="number" th:field="*{tax}" name="C" required /></td>
-				</tr>
-				<tr>
-					<td>Dodatkowe koszty(notarialne, prowizja):</td>
-					<td><input type="number" th:field="*{additionalCosts}"
-						name="D" required /></td>
+					<td><input type="number" th:field="*{purchasePrice}" /></td>
 				</tr>
 				<tr>
 					<td>Miesięczna cena wynajmu:</td>
 					<td><input type="number" th:field="*{propertyRental}" required /></td>
 				</tr>
-				<br> Result:
-				<output name="sumresult"></output>
+			<tr>
+				<td>Koszt wykończenia/remontu: </td>
+				<td><input type="number" th:field="*{renovationPrice}" required /></td>
+				</tr>
+			<tr>
+			<td>Podatek %: </td><td><input type="number" th:field="*{tax}" required /></td></tr>
+			<tr><td>
+				Dodatkowe koszty(notarialne, prowizja):</td>
+				<td> <input type="number" th:field="*{additionalCosts}" required /></td></tr>
 				<tr>
 					<td colspan="2"><button type="submit">Zapisz</button></td>
 				</tr>
-
+				
 
 			</table>
 

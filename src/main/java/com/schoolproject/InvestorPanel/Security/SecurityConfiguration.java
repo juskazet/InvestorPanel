@@ -20,36 +20,36 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 //			.dataSource(userRepo)
 //			.withUser("admin").password("{noop}Admin1").roles("USER");
 //	}
-	
+
 //	@Bean
 //	public PasswordEncoder passwordEncoder() {
 //		PasswordEncoder passwordEncoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
 //		return passwordEncoder;
 //	}
-	
+
 	@Bean
 	public PasswordEncoder passwordEncoder() {
-		
-		return  new BCryptPasswordEncoder();
+
+		return new BCryptPasswordEncoder();
 	}
-	
+
 	@Override
-	protected void configure(HttpSecurity http) throws Exception{
-		http
-		.authorizeRequests()
-		.antMatchers("/adminSite", "admin*").access("hasRole('ROLE_ADMIN')")
-		.antMatchers("/userSite", "user*").access("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
-		.antMatchers("/userPanel", "/raport", "/manage").authenticated()
-			.antMatchers("/", "/showAll", "/index", "/registration","/registerSuccess", "/kontakt", "/login", "/logoutSuccess", "/addUser").permitAll()
+	protected void configure(HttpSecurity http) throws Exception {
+		http.authorizeRequests().antMatchers("/admin*").access("hasRole('ROLE_ADMIN')").antMatchers("user*")
+				.access("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
+					.antMatchers("/userPanel", "/raport", "/manage").authenticated()
+					.antMatchers("/", "/showAll", "/index", "/registration", "/registerSuccess", "/kontakt", "/login",
+						"/logoutSuccess", "/addUser", "/error", "/propertyDetails").permitAll()
 
-
-		.and()
-			.formLogin()
-				.loginPage("/login")
-				.permitAll();
+				.and()
+					.formLogin()
+					.loginPage("/login")
+					.defaultSuccessUrl("/manage")
+					.permitAll()
+				.and()
+					.logout();
 //		.and()
 //			.httpBasic();
 	}
-	
 
 }

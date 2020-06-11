@@ -54,7 +54,7 @@ public class Start {
 //		userService.addWithDefaultRole(user1);
 		userService.addWithAdminRole(new User("a.kot@wp.pl", "ala11"));//, TypeOfUser.ADMIN));
 
-		userRepository.save(new User("e.plot@wp.pl", "ela2"));//, TypeOfUser.ADMIN));
+		userService.addWithUserRole(new User("e.plot@wp.pl", "ela2"));//, TypeOfUser.ADMIN));
 		userRepository.save(new User("u.ckowal@wp.pl", "ulalala"));//, TypeOfUser.REGULAR));
 		userRepository.save(new User("h.bakus@wp.pl", "helazwesela"));//, TypeOfUser.REGULAR));
 

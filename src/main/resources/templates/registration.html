@@ -15,8 +15,7 @@
 			<li><a  href="/">Strona domowa</a></li>
 			<li><a href="login">Zaloguj</a></li>
 			<li><a class="active" href="registration"> Rejestracja</a></li>
-			<li><a href="manage">Zarzadzaj</a></li>
-			<li><a href="kontakt">Kontakt</a></li>
+
 		</ul>
 		
 		<form action="#" method="post" th:action="@{/addUser}" th:object="${user}" >
@@ -31,7 +30,8 @@
 								title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required/></p>
 		  	<input type="submit" value="Save"/>
 		</form>
-		<a th:href="@{/kontakt}"> Wyswietl</a>
+		<br><br>
+		<a th:href="@{/}"> Wróć do strony głównej</a>
 	</center>
 
 

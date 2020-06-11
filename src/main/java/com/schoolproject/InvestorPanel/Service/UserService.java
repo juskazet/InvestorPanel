@@ -4,9 +4,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.schoolproject.InvestorPanel.Entity.Property;
+import com.schoolproject.InvestorPanel.Entity.PropertyRepository;
 import com.schoolproject.InvestorPanel.Entity.User;
 import com.schoolproject.InvestorPanel.Entity.UserRepository;
-import com.schoolproject.InvestorPanel.Entity.UserRole;
 import com.schoolproject.InvestorPanel.Entity.UserRole;
 import com.schoolproject.InvestorPanel.Entity.UserRoleRepository;
 
@@ -17,6 +18,7 @@ public class UserService {
 	private static final String ADMIN_ROLE = "ROLE_ADMIN";
 	private UserRepository userRepository;
 	private UserRoleRepository userRoleRepository;
+	private PropertyRepository propertyRepository;
 	// private PasswordEncoder passwordEncoder;
 
 	@Autowired
@@ -85,5 +87,12 @@ public class UserService {
 		user.toString();
 		System.out.println("nadano role admina");
 	}
+	
+//	public void deleteUserAndProperties(User user) {
+//
+//		Iterable<Property> allUserProperties = propertyRepository.findByOwner(user.getId());
+//		propertyRepository.deleteAll(allUserProperties);
+//		userRepository.delete(user);
+//	}
 
 }

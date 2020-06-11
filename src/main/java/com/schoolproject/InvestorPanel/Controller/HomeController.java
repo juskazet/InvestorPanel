@@ -1,32 +1,21 @@
 package com.schoolproject.InvestorPanel.Controller;
 
-import java.util.List;
-
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestHeader;
-import org.springframework.web.bind.annotation.RequestParam;
 
-import com.schoolproject.InvestorPanel.Entity.PropertyRepository;
 import com.schoolproject.InvestorPanel.Entity.Property;
+import com.schoolproject.InvestorPanel.Entity.PropertyRepository;
+import com.schoolproject.InvestorPanel.Entity.User;
 import com.schoolproject.InvestorPanel.Entity.UserRepository;
 import com.schoolproject.InvestorPanel.Service.UserService;
-import com.schoolproject.InvestorPanel.Entity.User;
 
 @Controller
 public class HomeController {
@@ -111,10 +100,10 @@ public class HomeController {
 		return "raport";
 	}
 
-	@GetMapping("/error")
-	public String toErr() {
-		return "index";
-	}
+//	@GetMapping("/error")
+//	public String toErr() {
+//		return "index";
+//	}
 
 	@GetMapping("/propertyForm")
 	public String toRegistrationProperty(Model model) {
@@ -122,9 +111,16 @@ public class HomeController {
 		return "propertyForm";
 	}
 
-	@GetMapping("/userSite")
-	public String toforUser() {
-		return "userSite";
+
+	
+	@GetMapping("/propertyDetails")
+	public String toPD() {
+		return "propertyDetails";
+	}
+	
+	@GetMapping("/new")
+	public String tonew() {
+		return "new";
 	}
 
 }
