@@ -22,12 +22,9 @@ public class Property {
 	@Column(name = "property_name", nullable = false)
 	private String name;
 	
-	@Column(name = "property_voivodeship", nullable = false)
-	private String voivodeship;
-	
 	@Column(name = "property_city", nullable = false)
 	private String city;
-	
+
 	@Column(name = "property_address", nullable = false)
 	private String address;
 	
@@ -45,67 +42,44 @@ public class Property {
 	
 	@Column(name = "purchase_price", nullable = false)
 	private int purchasePrice;
-	
-	@Column(name = "purchase_costs", nullable = false)
-	private int purchaseCosts;
 
-//	@Column(name = "monthly_property_rental", nullable = false)
-//	private int propertyRental;
-//
-//	@Column(name = "rental_months", nullable = false)
-//	private int rentalMonths;
-//
-//	@Column(name = "renovation_cost", nullable = false)
-//	private int renovationCost;
-//
-//	@Column(name = "potential_selling_price", nullable = false)
-//	private int potentialSell;
+	@Column(name = "monthly_property_rent", nullable = false)
+	private int propertyRental;
+
 
 	public Property() {
 		super();
 	}
-	
-	public Property(Long owner, String name, String voivodeship, String city, String address, int bedrooms, int bathrooms,
-		int yearBuilt, float area, int purchasePrice, int purchaseCosts) {
-	super();
-	this.owner = owner;
-	this.name = name;
-	this.voivodeship = voivodeship;
-	this.city = city;
-	this.address = address;
-	this.bedrooms = bedrooms;
-	this.bathrooms = bathrooms;
-	this.yearBuilt = yearBuilt;
-	this.area = area;
-	this.purchasePrice = purchasePrice;
-	this.purchaseCosts = purchaseCosts;
-}
 
+	public Property(Long owner, String name, String city, String address, int bedrooms, int bathrooms, int yearBuilt,
+					float area, int purchasePrice, int propertyRental) {
+		super();
+		this.owner = owner;
+		this.name = name;
+		this.city = city;
+		this.address = address;
+		this.bedrooms = bedrooms;
+		this.bathrooms = bathrooms;
+		this.yearBuilt = yearBuilt;
+		this.area = area;
+		this.purchasePrice = purchasePrice;
+		this.propertyRental = propertyRental;
+	}
 
-
-
-
-
-
-//	public Property(String name, String voivodeship, String city, String address, int bedrooms, int bathrooms,
-//			int yearBuilt, float area, int purchasePrice, int purchaseCosts, int propertyRental, int rentalMonths,
-//			int renovationCost, int potentialSell) {
-//		super();
-//		this.name = name;
-//		this.voivodeship = voivodeship;
-//		this.city = city;
-//		this.address = address;
-//		this.bedrooms = bedrooms;
-//		this.bathrooms = bathrooms;
-//		this.yearBuilt = yearBuilt;
-//		this.area = area;
-//		this.purchasePrice = purchasePrice;
-//		this.purchaseCosts = purchaseCosts;
-//		this.propertyRental = propertyRental;
-//		this.rentalMonths = rentalMonths;
-//		this.renovationCost = renovationCost;
-//		this.potentialSell = potentialSell;
-//	}
+//	public Property(Long owner, String name, String city, String address, int bedrooms, int bathrooms,
+//		int yearBuilt, float area, int purchasePrice, int propertyRental) {
+//	super();
+//	this.owner = owner;
+//	this.name = name;
+//	this.city = city;
+//	this.address = address;
+//	this.bedrooms = bedrooms;
+//	this.bathrooms = bathrooms;
+//	this.yearBuilt = yearBuilt;
+//	this.area = area;
+//	this.purchasePrice = purchasePrice;
+//	this.propertyRental = propertyRental;
+//}
 
 	public Long getId() {
 		return id;
@@ -129,14 +103,6 @@ public class Property {
 
 	public void setName(String name) {
 		this.name = name;
-	}
-
-	public String getVoivodeship() {
-		return voivodeship;
-	}
-
-	public void setVoivodeship(String voivodeship) {
-		this.voivodeship = voivodeship;
 	}
 
 	public String getCity() {
@@ -195,61 +161,20 @@ public class Property {
 		this.purchasePrice = purchasePrice;
 	}
 
-	public int getPurchaseCosts() {
-		return purchaseCosts;
+	public int getPropertyRental() {
+		return propertyRental;
 	}
 
-	public void setPurchaseCosts(int purchaseCosts) {
-		this.purchaseCosts = purchaseCosts;
+	public void setPropertyRental(int propertyRental) {
+		this.propertyRental = propertyRental;
 	}
 
-//	public int getPropertyRental() {
-//		return propertyRental;
-//	}
-//
-//	public void setPropertyRental(int propertyRental) {
-//		this.propertyRental = propertyRental;
-//	}
-//
-//	public int getRentalMonths() {
-//		return rentalMonths;
-//	}
-//
-//	public void setRentalMonths(int rentalMonths) {
-//		this.rentalMonths = rentalMonths;
-//	}
-//
-//	public int getRenovationCost() {
-//		return renovationCost;
-//	}
-//
-//	public void setRenovationCost(int renovationCost) {
-//		this.renovationCost = renovationCost;
-//	}
-//
-//	public int getPotentialSell() {
-//		return potentialSell;
-//	}
-//
-//	public void setPotentialSell(int potentialSell) {
-//		this.potentialSell = potentialSell;
-//	}
-//
-//	@Override
-//	public String toString() {
-//		return "Property [id=" + id + ", owner=" + owner + ", name=" + name + ", voivodeship=" + voivodeship + ", city="
-//				+ city + ", address=" + address + ", bedrooms=" + bedrooms + ", bathrooms=" + bathrooms + ", yearBuilt="
-//				+ yearBuilt + ", area=" + area + ", purchasePrice=" + purchasePrice + ", purchaseCosts=" + purchaseCosts
-//				+ ", propertyRental=" + propertyRental + ", rentalMonths=" + rentalMonths + ", renovationCost="
-//				+ renovationCost + ", potentialSell=" + potentialSell + "]";
-//	}
-	
 	
 	@Override
 	public String toString() {
-		return "Property [id=" + id + ", owner=" + owner + ", name=" + name + ", voivodeship=" + voivodeship + ", city="
+		return "Property [id=" + id + ", owner=" + owner + ", name=" + name + ", voivodeship=" + propertyRental + ", city="
 				+ city + ", address=" + address + ", bedrooms=" + bedrooms + ", bathrooms=" + bathrooms + ", yearBuilt="
-				+ yearBuilt + ", area=" + area + ", purchasePrice=" + purchasePrice + ", purchaseCosts=" + purchaseCosts
+				+ yearBuilt + ", area=" + area + ", purchasePrice=" + purchasePrice + ", propertyRental=" + propertyRental
 				+ "]";
 	}
 	

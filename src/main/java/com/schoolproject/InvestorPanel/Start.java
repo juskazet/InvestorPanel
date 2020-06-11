@@ -57,11 +57,7 @@ public class Start {
 		userRepository.save(new User("e.plot@wp.pl", "ela2"));//, TypeOfUser.ADMIN));
 		userRepository.save(new User("u.ckowal@wp.pl", "ulalala"));//, TypeOfUser.REGULAR));
 		userRepository.save(new User("h.bakus@wp.pl", "helazwesela"));//, TypeOfUser.REGULAR));
-		
-		propertyRepository.save(new Property(1L,"NIERUCHOMOSC1",  "gfh", "fgh", "dgfhgjh", 2, 3, 2014, 50.0F, 250000, 5000));
-		
-		
-		
+
 		
 //		userRepo.deleteById(4L);
 //		Iterable<User> all = userRepo.findAllByType(TypeOfUser.ADMIN);

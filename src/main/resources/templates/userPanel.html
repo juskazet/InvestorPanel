@@ -1,14 +1,16 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:tf="http://www.w3.org/1999/xhtml">
 <head>
 <meta charset="UTF-8">
 <title>Panelel Inwestora - Strona domowa</title>
 <link rel="stylesheet" type="text/css" href="style.css">
 </head>
+
 <body>
 	<center>
 		<h1>Panel</h1>
 		<h2>Panel klienta</h2>
+
 		<ul>
 			<li><a href="/">Strona domowa</a></li>
 			<li><a href="login">Zaloguj</a></li>
@@ -17,6 +19,7 @@
 			<li><a href="kontakt">Kontakt</a></li>
 			<li><a href="logout">Wyloguj</a></li>
 		</ul>
+
 
 		<br> <br> <a href="#" th:href="@{propertyForm}"> Dodaj
 			nieruchomość</a> <br> <br>
@@ -37,15 +40,20 @@
 		</table>
 
 		<br> <br>
-		<div tf:if="not ${allUserProperty.isEmpty()}">
 			<table border="1" cellpadding="10">
 				<tr>
 					<th>id</th>
-					<th>name</th>
-					<th>city</th>
-					<th>address</th>
-					<th>bedrooms</th>
-					<th>bathrooms</th>
+					<th>Nazwa</th>
+					<th>Miasto</th>
+					<th>Ulica</th>
+					<th>Liczba sypialni</th>
+					<th>Liczba łazienek</th>
+
+					<th>Rok budowy</th>
+					<th>Powierzchnia</th>
+					<th>Cena zakupu</th>
+					<th>Mieszięczna cena wynajmu</th>
+
 					<th>Edytuj</th>
 					<th>Usun</th>
 				</tr>
@@ -56,11 +64,16 @@
 					<td th:text="*{address}"></td>
 					<td th:text="*{bedrooms}"></td>
 					<td th:text="*{bathrooms}"></td>
+
+					<td th:text="*{yearBuilt}"></td>
+					<td th:text="*{area}"></td>
+					<td th:text="*{purchasePrice}"></td>
+					<td th:text="*{propertyRental}"></td>
+
 					<td><a th:href="@{editProperty/} + ${property.id}">Edytuj</a></td>
 					<td><a th:href="@{/deleteProperty/} + ${property.id}">Usun</a></td>
 			 	</tr>
 			</table>
-		</div>
 		
 
 		<br> <br>

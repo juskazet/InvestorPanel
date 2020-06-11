@@ -32,8 +32,6 @@
 				Nazwa: <input type="text" th:field="*{name}" required />
 			</p>
 			<p>
-				Województwo: <input type="text" th:field="*{voivodeship}" required />
-			</p>
 			<p>
 				Miasto: <input type="text" th:field="*{city}" required />
 			</p>
@@ -41,12 +39,10 @@
 				Adres: <input type="text" th:field="*{address}" required />
 			</p>
 			<p>
-				Liczba sypialni: <input type="number" th:field="*{bedrooms}"
-					required />
+				Liczba sypialni: <input type="number" th:field="*{bedrooms}" required />
 			</p>
 			<p>
-				Liczba łazienak: <input type="number" th:field="*{bathrooms}"
-					required />
+				Liczba łazienak: <input type="number" th:field="*{bathrooms}" required />
 			</p>
 			<p>
 				Rok budowy: <input type="number" th:field="*{yearBuilt}" required />
@@ -55,32 +51,12 @@
 				Powierzchnia: <input type="number" th:field="*{area}" required />
 			</p>
 			<p>
-				Cena zakupu: <input type="number" th:field="*{purchasePrice}"
-					required />
+				Cena zakupu: <input type="number" th:field="*{purchasePrice}" required />
 			</p>
 			<p>
-				Dodatkowe koszty zakupu: <input type="number"
-					th:field="*{purchaseCosts}" required />
+				Mieszięczna cena wynajmu: <input type="number" th:field="*{propertyRental}" required />
 			</p>
 
-			/////////////////////////////////////UPDATE
-			<!--  	<p>
-				Mieszęczny zysk z wynajmu: <input type="number"
-												th:field="*{propertyRental}" required />
-			</p>
-			<p>
-				Liczba miesięcy wynajmu rocznie: <input type="number"
-												th:field="*{rentalMonths}" required />
-			</p>
-			<p>
-				Koszty remontów: <input type="number"
-												th:field="*{renovationCost}" required />
-			</p>
-			<p>
-				Potencjalna cena sprzedaży: <input type="number"
-												th:field="*{potentialSell}" required />
-			</p>
-			-->
 
 			<input type="submit" value="Dodaj" />
 		</form>
