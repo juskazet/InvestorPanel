@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" xmlns:tf="http://www.w3.org/1999/xhtml">
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:tf="http://www.w3.org/1999/xhtml">
 <head>
 <meta charset="UTF-8">
 <title>Panelel Inwestora - Strona domowa</title>
@@ -18,66 +19,67 @@
 			<li><a href="kontakt">Kontakt</a></li>
 			<li><a href="logout">Wyloguj</a></li>
 		</ul>
-		<br><a href="logout">Wyloguj</a>
-
-		<br> <br> <a href="#" th:href="@{propertyForm}"> Dodaj
-			nieruchomość</a> <br> <br>
+		<br>
+		<a href="logout">Wyloguj</a> <br> <br> <a href="#"
+			th:href="@{propertyForm}"> Dodaj nieruchomość</a> <br> <br>
 
 		<table border="1">
 			<tr>
 				<th>id</th>
 				<th>email</th>
-				<th>pass</th>
-				<th>role</th>
+
 			</tr>
 			<tr th:object="${user}">
 				<td th:text="*{id}"></td>
 				<td th:text="*{emailAddress}"></td>
-				<td th:text="*{password}"></td>
-				<td th:text="*{roles}"></td>
 			</tr>
 		</table>
 
 		<br> <br>
-			<table border="1" cellpadding="10">
-				<tr>
-					<th>id</th>
-					<th>Nazwa</th>
-					<th>Miasto</th>
-					<th>Ulica</th>
-					<th>Liczba sypialni</th>
-					<th>Liczba łazienek</th>
+		<table border="1" cellpadding="5">
+			<tr>
+				<th>id</th>
+				<th>Nazwa</th>
+				<th>Miasto</th>
+				<th>Adres</th>
+				<th>Powierzchnia</th>
+				<th>Cena zakupu</th>
+				<th>Koszt wykończenia/remontu</th>
+				<th>Dodatkowe koszty zakupu</th>
+				<th>Mieszięczna cena wynajmu</th>
+				<th>Miesięczne koszty</th>
+			
+				<th>Wyświetl raport</th>
+				<th>Edytuj</th>
+				<th>Usun</th>
 
-					<th>Rok budowy</th>
-					<th>Powierzchnia</th>
-					<th>Cena zakupu</th>
-					<th>Mieszięczna cena wynajmu</th>
 
-					<th>Edytuj</th>
-					<th>Usun</th>
-				</tr>
-				<tr th:each="property: ${allUserProperties}" th:object="${property}">
-					<td th:text="*{id}"></td>
-					<td th:text="*{name}"></td>
-					<td th:text="*{city}"></td>
-					<td th:text="*{address}"></td>
-					<td th:text="*{bedrooms}"></td>
-					<td th:text="*{bathrooms}"></td>
+			</tr>
+			<tr th:each="property: ${allUserProperties}" th:object="${property}">
+				<td th:text="*{id}"></td>
+				<td th:text="*{name}"></td>
+				<td th:text="*{city}"></td>
+				<td th:text="*{address}"></td>
 
-					<td th:text="*{yearBuilt}"></td>
-					<td th:text="*{area}"></td>
-					<td th:text="*{purchasePrice}"></td>
-					<td th:text="*{propertyRental}"></td>
+				<td th:text="*{area}"></td>
+				<td th:text="*{purchasePrice}"></td>
+				<td th:text="*{renovationPrice}"></td>
+				<td th:text="*{additionalCosts}"></td>
+				<td th:text="*{propertyRental}"></td>
+				<td th:text="*{monthlyCosts}"></td>
+				
+				<td><a th:href="@{raport/} + ${property.id}">Raport</a></td>
+				<td><a th:href="@{editProperty/} + ${property.id}">Edytuj</a></td>
+				<td><a th:href="@{/deleteProperty/} + ${property.id}">Usun</a></td>
 
-					<td><a th:href="@{editProperty/} + ${property.id}">Edytuj</a></td>
-					<td><a th:href="@{/deleteProperty/} + ${property.id}">Usun</a></td>
-			 	</tr>
-			</table>
-		
+				
+			</tr>
+		</table>
+
 
 		<br> <br>
 
-	
+
 
 	</center>
 </body>

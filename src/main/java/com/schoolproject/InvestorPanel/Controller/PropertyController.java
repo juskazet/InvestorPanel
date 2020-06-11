@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -31,7 +32,7 @@ public class PropertyController {
 	public void setPropertyService(PropertyService propertyService) {
 		this.propertyService = propertyService;
 	}
-	
+
 	@PostMapping("/addProperty")
 	public String addProperty(@ModelAttribute() Property property, BindingResult bindResult) {
 
@@ -41,63 +42,41 @@ public class PropertyController {
 
 			System.err.println(property);
 			propertyService.addProperty(property);
-			return "redirect:raport";
+			return "redirect:manage";
 		}
-
-//		propertyRepository.save(property);
-//		
 	}
 
-	
 	@RequestMapping("/deleteProperty/{id}")
 	public String deleteProperty(@PathVariable(name = "id") Long id) {
 		propertyRepository.deleteById(id);
-		return "redirect:/manage";
+		return "redirect:manage";
 	}
-	
-//	@RequestMapping("/editProperty/{id}")
-//	public String editProperty(@PathVariable(name = "id") Long id) {
-//		return "redirect:/editPropertyForm";
-//	}
-	
-//	@RequestMapping("/editProperty/{id}")
-//	public ModelAndView showEditProductPage(@PathVariable(name = "id") Long id) {
-//	    ModelAndView mav = new ModelAndView("editPropertyForm");
-//	    Property property = propertyRepository.findOneById(id);
-//	    mav.addObject("property", property);
-//	    System.out.println("     EDUTUJEMY      "); 
-//	    return mav;
-//	}
-//	
-//	@RequestMapping(value = "/save", method = RequestMethod.POST)
-//	public String saveProperty(@ModelAttribute("property") Property property) {
-//	    propertyRepository.save(property);
-//	     
-//	    return "redirect:/";
-//	}
-	
-//	@GetMapping("/save")
-//	public String savePropertyMap(Model model) {
-//		Property property = new Property();
-//	    model.addAttribute("property", property);
-//	    return "save";
-//	}
-	
+
 	@PostMapping("/update")
 	public String saveProperty(@ModelAttribute("property") Property property) {
-	    propertyService.updateProperty(property);
-	     System.out.println("         ZAPIS           ");
-	    return "redirect:/";
+		propertyService.updateProperty(property);
+		return "redirect:manage";
 	}
-	
+
 	@RequestMapping("/editProperty/{id}")
 	public String showEditProductPage(@PathVariable(name = "id") Long id, Model model) {
-	    Property property = propertyRepository.findOneById(id);
-	    model.addAttribute("property", property);
-	    property.setId(id);
-	    return "editPropertyForm";
+		Property property = propertyRepository.findOneById(id);
+		model.addAttribute("property", property);
+		property.setId(id);
+		return "editPropertyForm";
 	}
 	
-	
+	@RequestMapping("raport/{id}")
+	public String raportPage(@PathVariable(name = "id") Long id, Model model) {
+		Property property = propertyRepository.findOneById(id);
+		model.addAttribute("property", property);
+		property.setId(id);
+		model.addAttribute("generalCosts", propertyService.generalCosts(property));
+		model.addAttribute("costPerMeter", propertyService.costPerMeter(property));
+		model.addAttribute("monthlyProfit", propertyService.monthlyProfit(property));
+		model.addAttribute("returnRatePerYear", propertyService.returnRatePerYear(property));
+		return "/raport";
+	}
+			
 
 }

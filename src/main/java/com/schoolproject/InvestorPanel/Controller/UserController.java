@@ -60,64 +60,23 @@ public class UserController {
 				return "userPanel";
 			}
 		}
-//        else 
-//    {
-//        String username = principal.toString();
-//        System.out.println(username);
-//    }
 
 		return "/";
 	}
-	
+
 	@PostMapping("/addUser")
-	public String addUser(@ModelAttribute()  User user, BindingResult bindResult) {
-		if(bindResult.hasErrors()) {
+	public String addUser(@ModelAttribute() User user, BindingResult bindResult) {
+		if (bindResult.hasErrors()) {
 			return "registration";
-		}
-		else {
-			if(userService.addWithUserRole(user)) {
-			return "redirect:registerSuccess";
-			}
-			else {
+		} else {
+			if (userService.addWithUserRole(user)) {
+				return "redirect:registerSuccess";
+			} else {
 				return "redirect:registerFail";
 			}
-//			userRepo.save(user);
-//			System.err.println(user);
-//			return "redirect:registerSuccess";
 		}
 	}
 
-//	@GetMapping("userPanel")
-//	public String toManagePanel(Model model) {
-//		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-//
-//		if (principal instanceof UserDetails) {
-//			String username = ((UserDetails) principal).getUsername();
-//			User user = userRepository.findByEmailAddress(username);
-//			System.out.println(username);
-//			System.out.println(user);
-//			model.addAttribute("user", user);
-//			Iterable<Property> allUserProperties = propertyRepository.findByOwner(user.getId());
-//			model.addAttribute("allUserProperties", allUserProperties);
-//
-//		}
-////        else 
-////    {
-////        String username = principal.toString();
-////        System.out.println(username);
-////    }
-//
-//		return "userPanel";
-//	}
-	
-//	@GetMapping("/adminSite")
-//	public String toforAdmin() {
-//		return "adminSite";
-//	}
-	
-	
-	
-	
 	@RequestMapping("/deleteUser/{id}")
 	public String deleteUser(@PathVariable(name = "id") Long id) {
 		User user = userRepository.findOneById(id);
@@ -126,14 +85,12 @@ public class UserController {
 		userRepository.deleteById(id);
 		return "redirect:/adminPanel";
 	}
-	
+
 	@RequestMapping("/addAdminRole/{id}")
 	public String addAdminRole(@PathVariable(name = "id") Long id) {
 
 		userService.addAdminRole(userRepository.findOneById(id));
 		return "redirect:/adminPanel";
 	}
-	
-	
 
 }

@@ -20,9 +20,7 @@
 		</ul>
 
 		<form action="#" th:action="@{/update}" method="post"
-			th:object="${property}"
-			oninput="sumresult.value = parseInt(A.value)  
-                + parseInt(B.value) + parseInt(C.value) + parseInt(D.value)">
+			th:object="${property}">
 
 			<table border="0" cellpadding="10">
 
@@ -47,51 +45,39 @@
 					<td>Adres:</td>
 					<td><input type="text" th:field="*{address}" /></td>
 				</tr>
-				<tr>
-					<td>Liczba sypialni:</td>
-					<td><input type="number" th:field="*{bedrooms}" /></td>
-				</tr>
-				<tr>
-					<td>Liczba łazienek:</td>
 
-					<td><input type="number" th:field="*{bathrooms}" /></td>
-				</tr>
-				<tr>
-					<td>Rok budowy:</td>
-					<td><input type="number" th:field="*{yearBuilt}" /></td>
-				</tr>
 				<tr>
 					<td>Powierzchnia:</td>
-					<td><input type="number" th:field="*{area}" /></td>
+					<td><input type="number" th:field="*{area}" /> m^2</td>
 				</tr>
 				<tr>
 					<td>Cena zakupu:</td>
-					<td><input type="number" th:field="*{purchasePrice}" name="A" /></td>
+					<td><input type="number" th:field="*{purchasePrice}" /> zł</td>
 				</tr>
 
 				<tr>
 					<td>Koszt wykończenia/remontu:</td>
 					<td><input type="number" th:field="*{renovationPrice}"
-						name="B" required /></td>
-				</tr>
-				<tr>
-					<td>Podatek %:</td>
-					<td><input type="number" th:field="*{tax}" name="C" required /></td>
+						required /> zł</td>
 				</tr>
 				<tr>
 					<td>Dodatkowe koszty(notarialne, prowizja):</td>
 					<td><input type="number" th:field="*{additionalCosts}"
-						name="D" required /></td>
+						required /> zł</td>
+				</tr>
+				<tr>
+					<td>Miesięczne koszty:</td>
+					<td><input type="number" th:field="*{monthlyCosts}" required /> zł</td>
 				</tr>
 				<tr>
 					<td>Miesięczna cena wynajmu:</td>
-					<td><input type="number" th:field="*{propertyRental}" required /></td>
+					<td><input type="number" th:field="*{propertyRental}" required /> zł</td>
 				</tr>
-				<br> Result:
-				<output name="sumresult"></output>
+
 				<tr>
 					<td colspan="2"><button type="submit">Zapisz</button></td>
 				</tr>
+
 
 
 			</table>

@@ -38,27 +38,35 @@ public class PropertyService {
 	public void addProperty(Property property) {
 		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
-//        if (principal instanceof UserDetails) {
 		String username = ((UserDetails) principal).getUsername();
 		User user = userRepository.findByEmailAddress(username);
 		System.out.println(username);
 		System.out.println("Jestem w ADD PROPERTY");
 		System.out.println(user);
 
-//    } 
-//        else 
-//    {
-//        String username = principal.toString();
-//        System.out.println(username);
-//    
-		// property.setOwner(user.getId());
 		property.setOwner(user.getId());
-		// user.getProperties().add(property);
+
 		propertyRepository.save(property);
 	}
 
 	public void updateProperty(Property property) {
 		propertyRepository.save(property);
+	}
+	
+	public float generalCosts(Property property) {
+		return property.getPurchasePrice() + property.getRenovationPrice() + property.getAdditionalCosts();
+	}
+	
+	public float costPerMeter(Property property) {
+		return generalCosts(property)/property.getArea();
+	}
+	
+	public float monthlyProfit(Property property) {
+		return property.getPropertyRental() - property.getMonthlyCosts();
+	}
+	
+	public float returnRatePerYear(Property property) {
+		return ((monthlyProfit(property)*12)/generalCosts(property))*100;
 	}
 	
 	

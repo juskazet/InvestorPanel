@@ -70,14 +70,6 @@ public class HomeController {
 	}
 
 
-	@GetMapping("/kontakt")
-	public String toKontakt(Model model) {
-		Iterable<User> allUsers = userRepository.findAll();
-		model.addAttribute("allUsers", allUsers);
-		return "showAll";
-	}
-
-
 	@GetMapping("/logout")
 	public String toLogoutSuccess(HttpServletRequest request, HttpServletResponse response) {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();

@@ -39,30 +39,10 @@ public class Start {
 	
 	@EventListener(ApplicationReadyEvent.class)
 	public void runExample() {
-		
-//		userRoleRepository.save(new UserRole("ROLE_USER"));		
-		
-		
-		User user1 = new User("a.nowak@wp.pl", "annna1");//, TypeOfUser.REGULAR);
-		UserRole defaultRole = userRoleRepository.findByRole(DEFAULT_ROLE_ADMIN);
-//		System.out.println(defaultRole);
-		user1.getRoles().add(defaultRole);
-//		System.out.println(defaultRole);
-//		System.out.println(user1);
-		userRepository.save(user1);
-		
-//		userService.addWithDefaultRole(user1);
-		userService.addWithAdminRole(new User("a.kot@wp.pl", "ala11"));//, TypeOfUser.ADMIN));
+			
+		userService.addWithAdminRole(new User("a.kot@wp.pl", "ala11"));
+		userService.addWithUserRole(new User("e.plot@wp.pl", "ela2"));
 
-		userService.addWithUserRole(new User("e.plot@wp.pl", "ela2"));//, TypeOfUser.ADMIN));
-		userRepository.save(new User("u.ckowal@wp.pl", "ulalala"));//, TypeOfUser.REGULAR));
-		userRepository.save(new User("h.bakus@wp.pl", "helazwesela"));//, TypeOfUser.REGULAR));
-
-		
-//		userRepo.deleteById(4L);
-//		Iterable<User> all = userRepo.findAllByType(TypeOfUser.ADMIN);
-//		all.forEach(System.out::println);
-		
 		for(User user : userRepository.findAll()) {
 			System.out.println(user);	
 		}

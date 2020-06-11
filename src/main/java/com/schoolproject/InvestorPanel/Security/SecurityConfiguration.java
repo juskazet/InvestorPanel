@@ -29,18 +29,16 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
 	@Bean
 	public PasswordEncoder passwordEncoder() {
-
 		return new BCryptPasswordEncoder();
 	}
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http.authorizeRequests().antMatchers("/admin*").access("hasRole('ROLE_ADMIN')").antMatchers("user*")
-				.access("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
-					.antMatchers("/userPanel", "/raport", "/manage").authenticated()
-					.antMatchers("/", "/showAll", "/index", "/registration", "/registerSuccess", "/kontakt", "/login",
-						"/logoutSuccess", "/addUser", "/error", "/propertyDetails").permitAll()
-
+		http.authorizeRequests().antMatchers("/admiPanel").access("hasRole('ROLE_ADMIN')")
+		.antMatchers("/userRole", "/editPropertyForm", "/propertyForm", "/raport").access("hasRole('ROLE_USER')")
+					.antMatchers("/userPanel", "/raport").authenticated()
+					.antMatchers("/", "/showAll", "/index", "/registration", "/registerSuccess",  "/login",
+						 "/addUser", "/error", "/propertyDetails").permitAll()
 				.and()
 					.formLogin()
 					.loginPage("/login")

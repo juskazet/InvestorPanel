@@ -1,0 +1,60 @@
+d
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Panelel Inwestora - Strona domowa</title>
+<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+	<center>
+		<h1>Panel</h1>
+		<h2>Raport</h2>
+		<ul>
+			<li><a href="/">Strona domowa</a></li>
+
+			<li><a href="manage">Zarzadzaj</a></li>
+			<li><a href="kontakt">Kontakt</a></li>
+			<br>
+			<a href="logout">Wyloguj</a>
+			<br>
+		</ul>
+
+		<table border="1" cellpadding="10">
+			
+			<tr>
+				<td>Nazwa</td>
+				<td th:text="${property.name}"></td>
+			</tr>
+			<tr>
+				<td>Adres</td>
+				<td th:text="${property.address}"></td>
+			</tr>
+			<tr>
+				<td>Powierzchnia w m^2</td>
+				<td th:text="${property.area}"></td>
+			</tr>
+			<tr>
+				<td>Całkowity koszt zakupu w zł:</td>
+				<td th:text="${generalCosts}" > </td>
+			</tr>
+			<tr>
+				<td>Koszt za 1 m^2 w zł:</td>
+				<td th:text="${costPerMeter}"> </td>
+			</tr>
+			<tr>
+				<td>Miesięczny zysk w zł:</td>
+				<td th:text="${monthlyProfit}"></td>
+			</tr>
+			<tr>
+				<td>Roczna stopa zwrotu w %:</td>
+				<td th:text="${returnRatePerYear}"> </td>
+			</tr>
+
+
+
+		</table>
+
+	</center>
+</body>
+</html>

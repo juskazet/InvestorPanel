@@ -8,21 +8,21 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class ErrController implements ErrorController {
 
-	private static final String PATH = "/error";
+	//private static final String PATH = "/error";
 
-    @RequestMapping(value = PATH)
+    @RequestMapping(value = "/error")
     public String error() {
-        return PATH;
+        return "/error";
     }
     
-    @GetMapping(PATH)
+    @GetMapping("/error")
     public String errorPage() {
-        return PATH;
+        return "/error";
     }
 
     @Override
     public String getErrorPath() {
-        return PATH;
+        return "/error";
     }
 	
 
