@@ -13,7 +13,7 @@
 			<li><a href="/">Strona domowa</a></li>
 			<li><a href="login">Zaloguj</a></li>
 			<li><a href="registration"> Rejestracja</a></li>
-			<li><a class="active" href="userPanel">Panel klienta</a></li>
+			<li><a href="manage">Zarzadzaj</a></li>
 			<li><a href="kontakt">Kontakt</a></li>
 			<li><a href="logout">Wyloguj</a></li>
 		</ul>
@@ -38,7 +38,7 @@
 
 		<br> <br>
 		<div tf:if="not ${allUserProperty.isEmpty()}">
-			<table border="1">
+			<table border="1" cellpadding="10">
 				<tr>
 					<th>id</th>
 					<th>name</th>
@@ -46,6 +46,8 @@
 					<th>address</th>
 					<th>bedrooms</th>
 					<th>bathrooms</th>
+					<th>Edytuj</th>
+					<th>Usun</th>
 				</tr>
 				<tr th:each="property: ${allUserProperties}" th:object="${property}">
 					<td th:text="*{id}"></td>
@@ -54,61 +56,15 @@
 					<td th:text="*{address}"></td>
 					<td th:text="*{bedrooms}"></td>
 					<td th:text="*{bathrooms}"></td>
-				</tr>
+					<td><a th:href="@{editProperty/} + ${property.id}">Edytuj</a></td>
+					<td><a th:href="@{/deleteProperty/} + ${property.id}">Usun</a></td>
+			 	</tr>
 			</table>
 		</div>
-		<div tf:if="${allUsers.isEmpty()}">
-			<h2>NO DATA</h2>
-		</div>
+		
 
 		<br> <br>
-		<h2>usun nieruchomosc</h2>
 
-		<form method="post" th:action="@{/deleteProperty2}"
-			th:object="${property}">
-			<label for="property">Wybierz nieruchomosc</label> <select
-				name="property" id="property">
-				<div th:each="property: ${allUserProperties}"
-					th:object="${property}">
-					<option value="*{name}" th:text="*{name}"></option>
-				</div>
-			</select> <br> <br> <input type="submit" value="Usun">
-		</form>
-
-		
-		
-		
-	<table>
-	
-			<thead>
-				<tr>
-
-					<th>name</th>
-					<th>city</th>
-					<th>address</th>
-					<th>Delete</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr th:each="property: ${allUserProperties}" th:object="${property}">
-
-					<td th:text="*{name}"></td>
-					<td th:text="*{city}"></td>z
-					<td th:text="*{address}"></td>
-					<td>
-						<form th:action="@{/deleteProperty}" mtehod="post"
-							th:object="${delProp}">
-					  		<input type="hidden" name="id" th:value="${property.id}">
-							<input type="hidden" name="name" th:value="${property.name}">
-							<input type="hidden" name="city" th:value="${property.city}">
-							<input type="hidden" name="address"
-								th:value="${property.address}">
-							<button type="submit">Usun</button>
-						</form>  
-					</td>
-				</tr>
-			</tbody>
-		</table>  
 	
 
 	</center>

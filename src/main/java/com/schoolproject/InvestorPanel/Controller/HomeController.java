@@ -72,29 +72,14 @@ public class HomeController {
 	public String toRegisterFail() {
 		return "registerFail";
 	}
-
-	@GetMapping("/userPanel")
-	public String toUserPanel(Model model) {
-		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-
-		if (principal instanceof UserDetails) {
-			String username = ((UserDetails) principal).getUsername();
-			User user = userRepository.findByEmailAddress(username);
-			System.out.println(username);
-			System.out.println(user);
-			model.addAttribute("user", user);
-			Iterable<Property> allUserProperties = propertyRepository.findByOwner(user.getId());
-			model.addAttribute("allUserProperties", allUserProperties);
-
-		}
-//        else 
-//    {
-//        String username = principal.toString();
-//        System.out.println(username);
-//    }
-
-		return "userPanel";
+	
+	@GetMapping("/adminPanel")
+	public String toAdminPanel(Model model) {
+		Iterable<User> allUsers = userRepository.findAll();
+		model.addAttribute("allUsers", allUsers);
+		return "adminPanel";
 	}
+
 
 	@GetMapping("/kontakt")
 	public String toKontakt(Model model) {
@@ -103,11 +88,6 @@ public class HomeController {
 		return "showAll";
 	}
 
-//	@PostMapping("/registration")
-//	public String registrerUser(@ModelAttribute User user) {
-//		userRepository.save(user);
-//		return "redirect:/";
-//	}
 
 	@GetMapping("/logout")
 	public String toLogoutSuccess(HttpServletRequest request, HttpServletResponse response) {
@@ -123,19 +103,6 @@ public class HomeController {
 		return "LogoutSuccess";
 	}
 
-//	@GetMapping("/show")
-//	public String showAll(Model model) {
-//		List<User> allUsers = (List<User>) userRepo.findAll();
-//		model.addAttribute("allUsers", allUsers);
-//	    return "showall";
-//	}
-//	
-////
-////	
-////	@GetMapping("/add")
-////	public String toAdd() {
-////		return "add";
-////	}
 
 	@GetMapping("/raport")
 	public String toRaport(Model model) {
@@ -145,9 +112,7 @@ public class HomeController {
 	}
 
 	@GetMapping("/error")
-	public String toErr(Model model) {
-		Iterable<Property> allProperties = propertyRepository.findAll();
-		model.addAttribute("allProperties", allProperties);
+	public String toErr() {
 		return "index";
 	}
 
@@ -157,53 +122,9 @@ public class HomeController {
 		return "propertyForm";
 	}
 
-	@GetMapping("/forUser")
+	@GetMapping("/userSite")
 	public String toforUser() {
-		return "forUser";
+		return "userSite";
 	}
 
-	@GetMapping("/forAdmin")
-	public String toforAdmin() {
-		return "forAdmin";
-	}
-
-	@PostMapping("/addUser")
-	public String addUser(@ModelAttribute()  User user, BindingResult bindResult) {
-		if(bindResult.hasErrors()) {
-			return "registration";
-		}
-		else {
-			if(userService.addWithUserRole(user)) {
-			return "redirect:registerSuccess";
-			}
-			else {
-				return "redirect:registerFail";
-			}
-//			userRepo.save(user);
-//			System.err.println(user);
-//			return "redirect:registerSuccess";
-		}
-	}
-	
-
-//	@GetMapping("/propertyForm")
-//	public String toRegistration(Model model) {
-//		model.addAttribute("property", new Property());
-//		return "propertyForm";
-//	}
-	
-//	@GetMapping("/usun")
-//	public String usun() {
-//		User user=userRepository.findOneById(6L);
-//		userRepository.delete(user);
-//		Iterable<Property> properties =user.getProperties();
-//		propertyRepository.deleteAll(properties);
-////		for(Property prop : properties) {
-////			propertyRepository.delete(prop);
-////		}
-//		System.out.println(properties);
-//		//propertyRepository.deleteAll(properties);
-//		userRepository.delete(user);
-//		return "raport";
-//	}
 }

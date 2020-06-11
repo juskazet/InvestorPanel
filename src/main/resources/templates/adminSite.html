@@ -8,15 +8,40 @@
 <body>
 	<center>
 		<h1>Panel</h1>
-		<h2>Logowanie</h2>
+		<h2>Index</h2>
 		<ul>
-			<li><a href="/">Strona domowa</a></li>
-			<li><a class="active" href="login">Zaloguj</a></li>
+			<li><a class="active" href="/">Strona domowa</a></li>
+			<li><a href="login">Zaloguj</a></li>
 			<li><a href="registration"> Rejestracja</a></li>
 			<li><a href="manage">Zarzadzaj</a></li>
 			<li><a href="kontakt">Kontakt</a></li>
 		</ul>
-
+		<br> <br>
+		<h2>Dla admina</h2>
+		<br> <br>
+	<div></div>	<table border="1" cellpadding="10">
+	<thead>
+			<tr>
+				<th>User id</th>
+				<th>User email</th>
+				<th>User pass</th>
+				<th>User role</th>
+				<th>Akcje</th>
+				<th>Akcje</th>
+			</tr></thead>
+			<tbody>
+			<tr th:each="user: ${allUsers}" th:object="${user}">
+				<td th:text="*{id}"></td>
+				<td th:text="*{emailAddress}"></td>
+				<td th:text="*{password}"></td>
+				<td th:text="*{roles}"></td>
+				<td><a th:href="/@{'/edit/' + ${user.id}}">Edytuj</a></td>
+				<td> <a
+					th:href="/@{'/delete/' + ${user.id}}">Usun</a></td>
+			</tr>
+			</tbody>
+		</table></div>
+		
 		<div tf:if="not ${allUsers.isEmpty()}">
 			<table border="1">
 				<tr>
@@ -24,38 +49,21 @@
 					<th>email</th>
 					<th>pass</th>
 					<th>role</th>
-					<th>actions</th>
 				</tr>
 				<tr th:each="user: ${allUsers}" th:object="${user}">
 					<td th:text="*{id}"></td>
 					<td th:text="*{emailAddress}"></td>
 					<td th:text="*{password}"></td>
 					<td th:text="*{roles}"></td>
-					<td>
-                    <a th:href="@{/delete/} + ${user.id}">Edit</a>
-                </td>
 				</tr>
 			</table>
+			
+			<br><br>
 		</div>
 		<div tf:if="${allUsers.isEmpty()}">
 			<h2>NO DATA</h2>
 		</div>
-
-	<!--  	<div>
-			<table border="1">
-				<tr th:each="user : ${allUsers}">
-					<td th:text="${user.id}"></td>
-					<td th:text="${user.emailAddress}"></td>
-					<td th:text="${user.password}"></td>
-					<td>
-						<form th:action="@{/deleteUser}" method="post" th:object="${user}">
-							<input type="hidden" th:field="${user.id}" />
-							<button type="submit" value="Submit" class="btn btn-danger">Delete</button>
-						</form>
-					</td>
-				</tr>
-			</table>
-		</div> -->
 	</center>
+
 </body>
 </html>

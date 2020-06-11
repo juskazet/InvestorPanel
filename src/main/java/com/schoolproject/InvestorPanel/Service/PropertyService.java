@@ -1,5 +1,7 @@
 package com.schoolproject.InvestorPanel.Service;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -11,6 +13,7 @@ import com.schoolproject.InvestorPanel.Entity.User;
 import com.schoolproject.InvestorPanel.Entity.UserRepository;
 
 @Service
+
 public class PropertyService {
 	
 	private UserRepository userRepository;
@@ -52,6 +55,10 @@ public class PropertyService {
 		//property.setOwner(user.getId());
         property.setOwner(user.getId());
  //       user.getProperties().add(property);
+		propertyRepository.save(property);
+	}
+	
+	public void updateProperty(Property property) {
 		propertyRepository.save(property);
 	}
 }

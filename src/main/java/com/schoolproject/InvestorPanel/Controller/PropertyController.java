@@ -4,11 +4,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.schoolproject.InvestorPanel.Entity.Property;
 import com.schoolproject.InvestorPanel.Entity.PropertyRepository;
+import com.schoolproject.InvestorPanel.Entity.User;
 import com.schoolproject.InvestorPanel.Entity.UserRepository;
 import com.schoolproject.InvestorPanel.Service.PropertyService;
 
@@ -45,12 +53,57 @@ public class PropertyController {
 //		propertyRepository.save(property);
 //		
 	}
+
 	
-	@PostMapping("/deleteProperty2")
-	public String delProperty(Model model, Property property) {
-		model.addAttribute("property", property);
-		System.out.println(property.toString());
-		return "/";
+	@RequestMapping("/deleteProperty/{id}")
+	public String deleteProperty(@PathVariable(name = "id") Long id) {
+		propertyRepository.deleteById(id);
+		return "redirect:/manage";
 	}
+	
+//	@RequestMapping("/editProperty/{id}")
+//	public String editProperty(@PathVariable(name = "id") Long id) {
+//		return "redirect:/editPropertyForm";
+//	}
+	
+//	@RequestMapping("/editProperty/{id}")
+//	public ModelAndView showEditProductPage(@PathVariable(name = "id") Long id) {
+//	    ModelAndView mav = new ModelAndView("editPropertyForm");
+//	    Property property = propertyRepository.findOneById(id);
+//	    mav.addObject("property", property);
+//	    System.out.println("     EDUTUJEMY      "); 
+//	    return mav;
+//	}
+//	
+//	@RequestMapping(value = "/save", method = RequestMethod.POST)
+//	public String saveProperty(@ModelAttribute("property") Property property) {
+//	    propertyRepository.save(property);
+//	     
+//	    return "redirect:/";
+//	}
+	
+//	@GetMapping("/save")
+//	public String savePropertyMap(Model model) {
+//		Property property = new Property();
+//	    model.addAttribute("property", property);
+//	    return "save";
+//	}
+	
+	@PostMapping("/update")
+	public String saveProperty(@ModelAttribute("property") Property property) {
+	    propertyService.updateProperty(property);
+	     System.out.println("         ZAPIS           ");
+	    return "redirect:/";
+	}
+	
+	@RequestMapping("/editProperty/{id}")
+	public String showEditProductPage(@PathVariable(name = "id") Long id, Model model) {
+	    Property property = propertyRepository.findOneById(id);
+	    model.addAttribute("property", property);
+	    property.setId(id);
+	    return "editPropertyForm";
+	}
+	
+	
 
 }

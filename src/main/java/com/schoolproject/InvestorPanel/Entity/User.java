@@ -85,7 +85,7 @@ public class User {
 		return roles;
 	}
 
-
+	@ManyToMany(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
 	public void setRoles(Set<UserRole> roles) {
 		this.roles = roles;
 	}

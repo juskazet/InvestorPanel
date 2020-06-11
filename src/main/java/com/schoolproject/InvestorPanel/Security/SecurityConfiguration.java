@@ -37,29 +37,18 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception{
 		http
 		.authorizeRequests()
-		.antMatchers("/forAdmin", "Admin/*").access("hasRole('ROLE_ADMIN')")
-		.antMatchers("/forUser", "User/*").access("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
-		.antMatchers("/userPanel", "/raport").authenticated()
-			.antMatchers("/", "/showAll", "/index", "/registration","/registerSuccess", "/kontakt", "/login", "/logoutSuccess").permitAll()
-//			.antMatchers("kontakt").permitAll()
-//			.antMatchers("index").permitAll()
-//			.antMatchers("registration").permitAll()
-//			.anyRequest().authenticated()
-			
-//			.anyRequest().permitAll()
+		.antMatchers("/adminSite", "admin*").access("hasRole('ROLE_ADMIN')")
+		.antMatchers("/userSite", "user*").access("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
+		.antMatchers("/userPanel", "/raport", "/manage").authenticated()
+			.antMatchers("/", "/showAll", "/index", "/registration","/registerSuccess", "/kontakt", "/login", "/logoutSuccess", "/addUser").permitAll()
+
 
 		.and()
 			.formLogin()
 				.loginPage("/login")
-				.permitAll()
+				.permitAll();
 //		.and()
-//			.logout()
-//			.logoutRequestMatcher(new AntPathRequestMatcher("/logoutSuccess"))
-//			.logoutSuccessUrl("/logoutSuccess")
-//			.invalidateHttpSession(true)
-//			.deleteCookies("JSESSIONID")
-		.and()
-			.httpBasic();
+//			.httpBasic();
 	}
 	
 

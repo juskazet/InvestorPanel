@@ -43,8 +43,8 @@ public class UserService {
 			return false;
 		} else
 		{
-			UserRole defaultRole = userRoleRepository.findByRole(USER_ROLE);
-			user.getRoles().add(defaultRole);
+			UserRole userRole = userRoleRepository.findByRole(USER_ROLE);
+			user.getRoles().add(userRole);
 			String passwordHash = passwordEncoder.encode(user.getPassword());
 			user.setPassword(passwordHash);
 			userRepository.save(user);
@@ -59,14 +59,31 @@ public class UserService {
 			return false;
 		} else
 		{
-			UserRole defaultRole = userRoleRepository.findByRole(ADMIN_ROLE);
-			user.getRoles().add(defaultRole);
+			UserRole adminRole = userRoleRepository.findByRole(ADMIN_ROLE);
+			user.getRoles().add(adminRole);
 			String passwordHash = passwordEncoder.encode(user.getPassword());
 			user.setPassword(passwordHash);
 			userRepository.save(user);
 			return true;
 			
 		}
+	}
+	
+	public boolean hasAdminRole(User user) {
+		return user.getRoles().contains(userRoleRepository.findByRole(ADMIN_ROLE));
+	}
+	
+	public boolean hasUserRole(User user) {
+		return user.getRoles().contains(userRoleRepository.findByRole(USER_ROLE));
+	}
+	
+	public void addAdminRole(User user) {
+		user.toString();
+		UserRole adminRole = userRoleRepository.findByRole(ADMIN_ROLE);
+		user.getRoles().add(adminRole);
+		userRepository.save(user);
+		user.toString();
+		System.out.println("nadano role admina");
 	}
 
 }

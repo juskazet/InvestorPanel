@@ -19,7 +19,7 @@ public class Property {
 	@Column(name = "owner_id", nullable = false)
 	private Long owner;
 	
-	@Column(name = "property_name", nullable = false, unique = true)
+	@Column(name = "property_name", nullable = false)
 	private String name;
 	
 	@Column(name = "property_voivodeship", nullable = false)
@@ -111,6 +111,10 @@ public Property(Long owner, String name, String voivodeship, String city, String
 
 	public Long getId() {
 		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public Long getOwner() {
