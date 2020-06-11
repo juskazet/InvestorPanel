@@ -1,24 +1,32 @@
-d
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<title>Panelel Inwestora - Strona domowa</title>
-<link rel="stylesheet" type="text/css" href="style.css">
+<title>Panelel Inwestora: raport</title>
+<link rel="stylesheet" type="text/css" href="/style.css">
 </head>
 <body>
 	<center>
-		<h1>Panel</h1>
+		<fieldset>
+			<p id="options">
+				<a href="logout">
+					<button>
+						Wyloguj
+					</button>
+				</a>
+			</p>
+		</fieldset>
+		<br>
+
+		<h1>Panel Inwestora</h1>
 		<h2>Raport</h2>
 		<ul>
 			<li><a href="/">Strona domowa</a></li>
 
-			<li><a href="manage">Zarzadzaj</a></li>
-			<li><a href="kontakt">Kontakt</a></li>
-			<br>
-			<a href="logout">Wyloguj</a>
-			<br>
+			<li><a href="/manage">Zarzadzaj</a></li>
+
 		</ul>
+
 
 		<table border="1" cellpadding="10">
 			
@@ -52,8 +60,14 @@ d
 			</tr>
 
 
-
 		</table>
+
+
+		<a href="/manage">
+			<button>
+				Wróć do zarządania
+			</button>
+		</a>
 
 	</center>
 </body>

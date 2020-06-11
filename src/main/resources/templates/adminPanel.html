@@ -7,18 +7,28 @@
 </head>
 <body>
 	<center>
-		<h1>Panel</h1>
-		<h2>Logowanie</h2>
+		<fieldset>
+		<p id="options">
+			<a href="logout">
+				<button>
+					Wyloguj
+				</button>
+			</a>
+		</p>
+		</fieldset>
+		<br>
+
+		<h1>Panel Inwstora</h1>
+		<h2>Witaj Administratorze</h2>
 		<ul>
 			<li><a href="/">Strona domowa</a></li>
-
-			<li><a href="manage">Zarzadzaj</a></li>
-			<li><a href="kontakt">Kontakt</a></li>
+			<li><a class="active" href="manage">Zarzadzaj</a></li>
 		</ul>
-		
-		<br><a href="logout">Wyloguj</a><br>
 
-		<div tf:if="not ${allUsers.isEmpty()}">
+		<br>
+		<br>
+
+		<div >
 			<table border="1" cellpadding="10">
 				<tr>
 					<th>id</th>
@@ -38,9 +48,7 @@
 				</tr>
 			</table>
 		</div>
-		<div tf:if="${allUsers.isEmpty()}">
-			<h2>NO DATA</h2>
-		</div>
+
 
 		<!--  	<div>
 			<table border="1">

@@ -7,20 +7,25 @@
 </head>
 <body>
 	<center>
-		<h1>Panel</h1>
+		<h1>Panelel Inwestora</h1>
+		<h2>Sukces!</h2>
 
 		<ul>
 			<li><a href="/">Strona domowa</a></li>
 			<li><a href="login">Zaloguj</a></li>
-			<li><a href="registration"> Rejestracja</a></li>
-			<li><a href="kontakt">Kontakt</a></li>
+			<li><a class="active" href="registration"> Rejestracja</a></li>
 		</ul>
 		<br>
 		<br>
 		<h2>Dziękujemy za rejestrację!</h2>
 		<br>
-		<br> <a href="#" th:href="@{/login}"> Zaloguj</a>
-		<br> <a href="#" th:href="@{/}"> Wróć do strony głównej</a>
+		<br> <a href="#" th:href="@{/login}">
+		<button>Zaloguj</button>
+		</a>
+		<br>
+		<br> <a href="#" th:href="@{/}">
+		<button>Wróć do strony głównej</button>
+	</a>
 	</center>
 </body>
 </html>

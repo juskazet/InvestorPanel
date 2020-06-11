@@ -105,11 +105,6 @@ public class HomeController {
 
 
 	
-	@GetMapping("/propertyDetails")
-	public String toPD() {
-		return "propertyDetails";
-	}
-	
 	@GetMapping("/new")
 	public String tonew() {
 		return "new";

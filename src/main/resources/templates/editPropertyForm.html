@@ -1,89 +1,99 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="UTF-8">
-<title>Panelel Inwestora - Strona domowa</title>
-<link rel="stylesheet" type="text/css" href="style.css">
+	<meta charset="UTF-8">
+	<title>Panelel Inwestora</title>
+	<link rel="stylesheet" type="text/css" href="/style.css">
+
 </head>
 <body>
-	<center>
-		<h1>Panel</h1>
-		<h2>Edytuj nieruchomość</h2>
-		<ul>
-			<li><a href="/">Strona domowa</a></li>
+<center>
+	<fieldset>
+		<p id="options">
+			<a href="logout">
+				<button>
+					Wyloguj
+				</button>
+			</a>
+		</p>
+	</fieldset>
+	<br>
+	<h1>Panel Inwestora</h1>
+	<h2>Edytuj nieruchomość</h2>
 
-			<li><a href="manage">Zarzadzaj</a></li>
-			<li><a href="kontakt">Kontakt</a></li>
-			<br>
-			<a href="logout">Wyloguj</a>
-			<br>
-		</ul>
+	<ul>
+		<li><a href="/">Strona domowa</a></li>
+		<li><a href="/manage">Zarzadzaj</a></li>
+	</ul>
 
-		<form action="#" th:action="@{/update}" method="post"
-			th:object="${property}">
+	<form action="#" th:action="@{/update}" method="post"
+		  th:object="${property}">
 
-			<table border="0" cellpadding="10">
+		<table border="0" cellpadding="10">
 
-				<tr>
-					<!-- 	<td>id:</td>  -->
-					<td><input type="hidden" th:field="*{id}" readonly="readonly" /></td>
-				</tr>
-				<tr>
-					<!--  	<td>owner:</td>   -->
-					<td><input type="hidden" th:field="*{owner}"
-						readonly="readonly" /></td>
-				</tr>
-				<tr>
-					<td>Nieruchomość:</td>
-					<td><input type="text" th:field="*{name}" /></td>
-				</tr>
-				<tr>
-					<td>Miasto:</td>
-					<td><input type="text" th:field="*{city}" /></td>
-				</tr>
-				<tr>
-					<td>Adres:</td>
-					<td><input type="text" th:field="*{address}" /></td>
-				</tr>
+			<tr>
+				<!-- 	<td>id:</td>  -->
+				<td><input type="hidden" th:field="*{id}" readonly="readonly" /></td>
+			</tr>
+			<tr>
+				<!--  	<td>owner:</td>   -->
+				<td><input type="hidden" th:field="*{owner}"
+						   readonly="readonly" /></td>
+			</tr>
+			<tr>
+				<td>Nieruchomość:</td>
+				<td><input type="text" th:field="*{name}" /></td>
+			</tr>
+			<tr>
+				<td>Miasto:</td>
+				<td><input type="text" th:field="*{city}" /></td>
+			</tr>
+			<tr>
+				<td>Adres:</td>
+				<td><input type="text" th:field="*{address}" /></td>
+			</tr>
 
-				<tr>
-					<td>Powierzchnia:</td>
-					<td><input type="number" th:field="*{area}" /> m^2</td>
-				</tr>
-				<tr>
-					<td>Cena zakupu:</td>
-					<td><input type="number" th:field="*{purchasePrice}" /> zł</td>
-				</tr>
+			<tr>
+				<td>Powierzchnia:</td>
+				<td><input type="number" th:field="*{area}" /> m^2</td>
+			</tr>
+			<tr>
+				<td>Cena zakupu:</td>
+				<td><input type="number" th:field="*{purchasePrice}" /> zł</td>
+			</tr>
 
-				<tr>
-					<td>Koszt wykończenia/remontu:</td>
-					<td><input type="number" th:field="*{renovationPrice}"
-						required /> zł</td>
-				</tr>
-				<tr>
-					<td>Dodatkowe koszty(notarialne, prowizja):</td>
-					<td><input type="number" th:field="*{additionalCosts}"
-						required /> zł</td>
-				</tr>
-				<tr>
-					<td>Miesięczne koszty:</td>
-					<td><input type="number" th:field="*{monthlyCosts}" required /> zł</td>
-				</tr>
-				<tr>
-					<td>Miesięczna cena wynajmu:</td>
-					<td><input type="number" th:field="*{propertyRental}" required /> zł</td>
-				</tr>
+			<tr>
+				<td>Koszt wykończenia/remontu:</td>
+				<td><input type="number" th:field="*{renovationPrice}"
+						   required /> zł</td>
+			</tr>
+			<tr>
+				<td>Dodatkowe koszty(notarialne, prowizja):</td>
+				<td><input type="number" th:field="*{additionalCosts}"
+						   required /> zł</td>
+			</tr>
+			<tr>
+				<td>Miesięczne koszty:</td>
+				<td><input type="number" th:field="*{monthlyCosts}" required /> zł</td>
+			</tr>
+			<tr>
+				<td>Miesięczna cena wynajmu:</td>
+				<td><input type="number" th:field="*{propertyRental}" required /> zł</td>
+			</tr>
 
-				<tr>
-					<td colspan="2"><button type="submit">Zapisz</button></td>
-				</tr>
+			<tr>
+				<td colspan="2"><button type="submit">Zapisz</button></td>
+			</tr>
+		</table>
 
+	</form>
 
+	<a href="/manage">
+	<button>
+		Wróć do zarządania
+	</button>
+	</a>
 
-			</table>
-
-		</form>
-
-	</center>
+</center>
 </body>
 </html>

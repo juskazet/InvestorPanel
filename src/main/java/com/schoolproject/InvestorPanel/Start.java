@@ -42,6 +42,7 @@ public class Start {
 			
 		userService.addWithAdminRole(new User("a.kot@wp.pl", "ala11"));
 		userService.addWithUserRole(new User("e.plot@wp.pl", "ela2"));
+		userService.addWithUserRole(new User("wp@wp.pl", "Pocahontas1"));
 
 		for(User user : userRepository.findAll()) {
 			System.out.println(user);	

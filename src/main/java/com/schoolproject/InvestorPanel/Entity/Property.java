@@ -28,15 +28,6 @@ public class Property {
 	@Column(name = "property_address", nullable = false)
 	private String address;
 
-//	@Column(name = "num_of_bedrooms", nullable = false)
-//	private int bedrooms;
-//	
-//	@Column(name = "num_of_bathrooms", nullable = false)
-//	private int bathrooms;
-//	
-//	@Column(name = "year_built", nullable = false)
-//	private int yearBuilt;
-//	
 	@Column(name = "property_area", nullable = false)
 	private float area;
 

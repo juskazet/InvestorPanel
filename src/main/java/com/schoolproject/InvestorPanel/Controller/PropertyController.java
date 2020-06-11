@@ -46,10 +46,15 @@ public class PropertyController {
 		}
 	}
 
+//	@RequestMapping("/deleteProperty/{id}")
+//	public String deleteProperty(@PathVariable(name = "id") Long id) {
+//		propertyRepository.deleteById(id);
+//		return "redirect:manage";
+//	}
 	@RequestMapping("/deleteProperty/{id}")
 	public String deleteProperty(@PathVariable(name = "id") Long id) {
 		propertyRepository.deleteById(id);
-		return "redirect:manage";
+		return "redirect:/manage";
 	}
 
 	@PostMapping("/update")

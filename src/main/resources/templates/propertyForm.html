@@ -1,74 +1,87 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="UTF-8">
-<title>Panelel Inwestora - Strona domowa</title>
-<link rel="stylesheet" type="text/css" href="style.css">
+	<meta charset="UTF-8">
+	<title>Panelel Inwestora - Strona domowa</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-	<center>
-		<h1>Panel</h1>
-		<h2>Dodaj nieruchomość</h2>
-		<ul>
-			<li><a href="/">Strona domowa</a></li>
+<center>
+	<fieldset>
+		<p id="options">
+			<a href="logout">
+				<button>
+					Wyloguj
+				</button>
+			</a>
+		</p>
+	</fieldset>
+	<br>
 
-			<li><a href="manage">Zarzadzaj</a></li>
-			<li><a href="kontakt">Kontakt</a></li>
-			<br>
-			<a href="logout">Wyloguj</a>
+	<h1>Panel Inwestora</h1>
+	<h2>Dodaj nieruchomość</h2>
+	<ul>
+		<li><a href="/">Strona domowa</a></li>
 
-		</ul>
-		<!--  		<form action="#" method="post" th:action="@{/addProprerty}" th:object="${property}">
-			<p th:errors="*{emailAddress}">Email errors></p>
-		  	<p>Email: <input type="text" th:field="*{emailAddress}" required/></p>
-		  	<p th:errors="*{password}">Password errors></p>
-		 	<p>Password: <input type="password" th:field="*{password}" required/></p>
-		  	<input type="submit" value="Save"/>
-		</form>
-		<p>Adres: <input type="text" th:field="*{address}" required/></p>
-		-->
-		<form action="#" method="post" th:action="@{/addProperty}"
-			th:object="${property}">
-			<p>
-				Nazwa: <input type="text" th:field="*{name}" required />
-			</p>
-			<p>
-			<p>
-				Miasto: <input type="text" th:field="*{city}" required />
-			</p>
-			<p>
-				Adres: <input type="text" th:field="*{address}" required />
-			</p>
-			<p>
-				Powierzchnia: <input type="number" th:field="*{area}" required /> m^2
-			</p>
-			<p>
-				Cena zakupu: <input type="number" th:field="*{purchasePrice}"
-					required /> zł
-			</p>
-			<p>
-				Koszt wykończenia/remontu: <input type="number"
-					th:field="*{renovationPrice}" required /> zł
-			</p>
-			<p>
-				Dodatkowe koszty zakupu(notarialne, prowizja): <input type="number"
-					th:field="*{additionalCosts}" required /> zł
-			</p>
-			<p>
-				Miesięczne koszty: <input type="number"
-					th:field="*{monthlyCosts}" required /> zł 
-			</p>
-			<p>
-				Miesięczna cena wynajmu: <input type="number"
-					th:field="*{propertyRental}" required /> zł
-			</p>
+		<li><a class="active" href="manage">Zarzadzaj</a></li>
+
+	</ul>
+
+	<form id="addproperty" action="#" method="post" th:action="@{/addProperty}"
+		  th:object="${property}">
+		<p>
+			Nazwa Nieruchomości:
+		</p>
+		<p>
+			<input type="text" th:field="*{name}" required />
+		</p>
+		<p>
+			Miasto:
+		</p>
+		<p>
+			<input type="text" th:field="*{city}"  required />
+		</p>
+		<p>
+			Adres:
+		</p>
+		<p>
+			<input type="text" th:field="*{address}"  required />
+		</p>
+		<p>
+			Powierzchnia:
+		</p>
+		<p>
+			<input type="number" th:field="*{area}"  min="1" required />
+		</p>
+		<p>
+			Cena zakupu:
+		</p>
+		<p>
+			<input type="number" th:field="*{purchasePrice}" min="1" required />
+		</p>
+		<p>
+			Wyskość czynszu:
+		</p>
+		<p>
+			<input type="number" th:field="*{propertyRental}" min="1" required />
+		</p>
+		<p>
+			Koszt remontu:
+		</p>
+		<p>
+			<input type="number" th:field="*{renovationPrice}" min="1" required />
+		</p>
+		<p>
+			Dodatkowe koszty:
+		</p>
+		<p>
+			<input type="number" th:field="*{additionalCosts}" min="1" required />
+		</p>
 
 
+		<input type="submit" value="Dodaj" />
+	</form>
 
-
-			<input type="submit" value="Dodaj" />
-		</form>
-
-	</center>
+</center>
 </body>
 </html>

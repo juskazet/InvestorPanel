@@ -1,86 +1,94 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
-	xmlns:tf="http://www.w3.org/1999/xhtml">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:tf="http://www.w3.org/1999/xhtml">
 <head>
-<meta charset="UTF-8">
-<title>Panelel Inwestora - Strona domowa</title>
-<link rel="stylesheet" type="text/css" href="style.css">
+	<meta charset="UTF-8">
+	<title>Panelel Inwestora - Strona domowa</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
 </head>
 
 <body>
-	<center>
-		<h1>Panel</h1>
-		<h2>Panel klienta</h2>
+<center>
+	<fieldset>
+		<p id="options">
+			<a href="logout">
+				<button>
+					Wyloguj
+				</button>
+			</a>
+		</p>
+	</fieldset>
+	<br>
 
-		<ul>
-			<li><a href="/">Strona domowa</a></li>
+	<h1>Panel Inwestora</h1>
+	<h2>Panel klienta</h2>
 
-			<li><a href="manage">Zarzadzaj</a></li>
-			<li><a href="kontakt">Kontakt</a></li>
-			<li><a href="logout">Wyloguj</a></li>
-		</ul>
-		<br>
-		<a href="logout">Wyloguj</a> <br> <br> <a href="#"
-			th:href="@{propertyForm}"> Dodaj nieruchomość</a> <br> <br>
+	<ul>
+		<li><a href="/">Strona domowa</a></li>
+		<li><a class="active" href="manage">Zarzadzaj</a></li>
 
-		<table border="1">
-			<tr>
-				<th>id</th>
-				<th>email</th>
+	</ul>
 
-			</tr>
-			<tr th:object="${user}">
-				<td th:text="*{id}"></td>
-				<td th:text="*{emailAddress}"></td>
-			</tr>
-		</table>
-
-		<br> <br>
-		<table border="1" cellpadding="5">
-			<tr>
-				<th>id</th>
-				<th>Nazwa</th>
-				<th>Miasto</th>
-				<th>Adres</th>
-				<th>Powierzchnia</th>
-				<th>Cena zakupu</th>
-				<th>Koszt wykończenia/remontu</th>
-				<th>Dodatkowe koszty zakupu</th>
-				<th>Mieszięczna cena wynajmu</th>
-				<th>Miesięczne koszty</th>
-			
-				<th>Wyświetl raport</th>
-				<th>Edytuj</th>
-				<th>Usun</th>
+	<br>
 
 
-			</tr>
-			<tr th:each="property: ${allUserProperties}" th:object="${property}">
-				<td th:text="*{id}"></td>
-				<td th:text="*{name}"></td>
-				<td th:text="*{city}"></td>
-				<td th:text="*{address}"></td>
+	<br> <br>
+	<a href="propertyForm">
+		<button>
+			Dodaj nieruchomość
+		</button>
+	</a>
 
-				<td th:text="*{area}"></td>
-				<td th:text="*{purchasePrice}"></td>
-				<td th:text="*{renovationPrice}"></td>
-				<td th:text="*{additionalCosts}"></td>
-				<td th:text="*{propertyRental}"></td>
-				<td th:text="*{monthlyCosts}"></td>
-				
-				<td><a th:href="@{raport/} + ${property.id}">Raport</a></td>
-				<td><a th:href="@{editProperty/} + ${property.id}">Edytuj</a></td>
-				<td><a th:href="@{/deleteProperty/} + ${property.id}">Usun</a></td>
+	<br> <br>
 
-				
-			</tr>
-		</table>
+	<h3>Twoje nieruchomości</h3>
+
+	<br> <br>
+	<span th:if="${!allUserProperties.isEmpty()}">
+	<table border="1" cellpadding="5">
+		<tr>
+			<th>id</th>
+			<th>Nazwa</th>
+			<th>Miasto</th>
+			<th>Adres</th>
+			<th>Powierzchnia</th>
+			<th>Cena zakupu</th>
+			<th>Koszt wykończenia/remontu</th>
+			<th>Dodatkowe koszty zakupu</th>
+			<th>Mieszięczna cena wynajmu</th>
+			<th>Miesięczne koszty</th>
+
+			<th>Wyświetl raport</th>
+			<th>Edytuj</th>
+			<th>Usun</th>
 
 
-		<br> <br>
+		</tr>
+		<tr th:each="property: ${allUserProperties}" th:object="${property}">
+			<td th:text="*{id}"></td>
+			<td th:text="*{name}"></td>
+			<td th:text="*{city}"></td>
+			<td th:text="*{address}"></td>
+
+			<td th:text="*{area}"></td>
+			<td th:text="*{purchasePrice}"></td>
+			<td th:text="*{renovationPrice}"></td>
+			<td th:text="*{additionalCosts}"></td>
+			<td th:text="*{propertyRental}"></td>
+			<td th:text="*{monthlyCosts}"></td>
+
+			<td><a th:href="@{raport/} + ${property.id}">Raport</a></td>
+			<td><a th:href="@{editProperty/} + ${property.id}">Edytuj</a></td>
+			<td><a th:href="@{/deleteProperty/} + ${property.id}">Usun</a></td>
 
 
+		</tr>
+	</table>
+	</span>
 
-	</center>
+	<span th:if="${allUserProperties.isEmpty()}">Brak nieruchomości</span>
+	<br> <br>
+
+
+</center>
 </body>
 </html>

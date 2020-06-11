@@ -35,19 +35,23 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests().antMatchers("/admiPanel").access("hasRole('ROLE_ADMIN')")
-		.antMatchers("/userRole", "/editPropertyForm", "/propertyForm", "/raport").access("hasRole('ROLE_USER')")
-					.antMatchers("/userPanel", "/raport").authenticated()
-					.antMatchers("/", "/showAll", "/index", "/registration", "/registerSuccess",  "/login",
-						 "/addUser", "/error", "/propertyDetails").permitAll()
+				.antMatchers("/userRole", "/editPropertyForm", "/propertyForm", "/raport").access("hasRole('ROLE_USER')")
+				.antMatchers("/userPanel", "/raport", "/manage").authenticated()
+				.antMatchers("/", "/showAll", "/index", "/registration", "/registerSuccess",  "/login",
+						"/addUser", "/error", "/propertyDetails").permitAll()
 				.and()
-					.formLogin()
-					.loginPage("/login")
-					.defaultSuccessUrl("/manage")
-					.permitAll()
+				.formLogin()
+				.loginPage("/login")
+				.defaultSuccessUrl("/manage")
+				.permitAll()
 				.and()
-					.logout();
-//		.and()
-//			.httpBasic();
+				.logout();
+//        .and()
+//            .httpBasic();
 	}
 
+
+
 }
+
+
